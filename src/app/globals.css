@@ -1,26 +1,157 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-space-900: #0a0e27;
+  --color-space-800: #0f1538;
+  --color-space-700: #161d4a;
+  --color-space-600: #1e2760;
+  --color-space-500: #2a3580;
+  --color-electric: #00d4ff;
+  --color-electric-dim: #0099bb;
+  --color-solar: #ffb800;
+  --color-solar-dim: #cc9300;
+  --color-danger: #ff4d6a;
+  --color-success: #00e676;
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  background: var(--color-space-900);
+  color: #e2e8f0;
+}
+
+/* Star field background */
+.stars {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.stars::before,
+.stars::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(1px 1px at 20px 30px, #ffffff33, transparent),
+    radial-gradient(1px 1px at 40px 70px, #ffffff22, transparent),
+    radial-gradient(1px 1px at 50px 160px, #ffffff28, transparent),
+    radial-gradient(1px 1px at 90px 40px, #ffffff15, transparent),
+    radial-gradient(1.5px 1.5px at 130px 80px, #ffffff40, transparent),
+    radial-gradient(1px 1px at 160px 120px, #ffffff20, transparent),
+    radial-gradient(1.5px 1.5px at 200px 150px, #ffffff35, transparent),
+    radial-gradient(1px 1px at 250px 60px, #ffffff18, transparent),
+    radial-gradient(1px 1px at 290px 180px, #ffffff25, transparent),
+    radial-gradient(1.5px 1.5px at 340px 100px, #ffffff30, transparent),
+    radial-gradient(1px 1px at 380px 200px, #ffffff20, transparent),
+    radial-gradient(1px 1px at 420px 50px, #ffffff22, transparent),
+    radial-gradient(1.5px 1.5px at 470px 140px, #ffffff38, transparent),
+    radial-gradient(1px 1px at 520px 90px, #ffffff15, transparent),
+    radial-gradient(1px 1px at 570px 170px, #ffffff28, transparent);
+  background-size: 600px 220px;
+  animation: drift 60s linear infinite;
+}
+
+.stars::after {
+  background-size: 400px 300px;
+  animation: drift 90s linear infinite reverse;
+  opacity: 0.6;
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-220px);
+  }
+}
+
+/* Glow effects */
+.glow-blue {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), 0 0 60px rgba(0, 212, 255, 0.1);
+}
+
+.glow-gold {
+  box-shadow: 0 0 20px rgba(255, 184, 0, 0.3), 0 0 60px rgba(255, 184, 0, 0.1);
+}
+
+.glass {
+  background: rgba(15, 21, 56, 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 212, 255, 0.12);
+}
+
+.glass-gold {
+  background: rgba(15, 21, 56, 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 184, 0, 0.12);
+}
+
+/* Section gradient dividers */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-electric), transparent);
+  opacity: 0.3;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-space-900);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-space-600);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-electric-dim);
+}
+
+/* Power flow animation */
+@keyframes flowDash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.flow-line {
+  stroke-dasharray: 8, 12;
+  animation: flowDash 1.5s linear infinite;
+}
+
+/* Orbit animation */
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pulse animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
 }
