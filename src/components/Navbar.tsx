@@ -7,7 +7,7 @@ const NAV_ITEMS = [
     { id: "hero", label: "Home" },
     { id: "solar", label: "Solar Arrays" },
     { id: "batteries", label: "Batteries" },
-    { id: "pmad", label: "Power Distribution" },
+    { id: "pmad", label: "PMAD" },
 ];
 
 export default function Navbar() {
@@ -51,16 +51,16 @@ export default function Navbar() {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                        ? "bg-space-900/80 backdrop-blur-xl border-b border-electric/10"
-                        : "bg-transparent"
+                    ? "bg-[#0a0d1a]/90 backdrop-blur-xl border-b border-white/[0.06]"
+                    : "bg-transparent"
                     }`}
             >
-                <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+                <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
                     <button
                         onClick={() => scrollTo("hero")}
-                        className="font-[family-name:var(--font-heading)] text-lg font-bold text-white hover:text-electric transition-colors"
+                        className="font-[family-name:var(--font-heading)] text-sm font-bold text-white hover:text-amber-400 transition-colors tracking-wide uppercase"
                     >
-                        ⚡ ISS EPS
+                        ISS EPS
                     </button>
 
                     {/* Desktop nav */}
@@ -69,15 +69,15 @@ export default function Navbar() {
                             <button
                                 key={item.id}
                                 onClick={() => scrollTo(item.id)}
-                                className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors ${activeSection === item.id
-                                        ? "text-electric"
-                                        : "text-slate-400 hover:text-white"
+                                className={`relative px-4 py-2 text-xs font-medium rounded-md transition-colors uppercase tracking-wider ${activeSection === item.id
+                                    ? "text-amber-400"
+                                    : "text-slate-500 hover:text-slate-200"
                                     }`}
                             >
                                 {activeSection === item.id && (
                                     <motion.span
                                         layoutId="nav-indicator"
-                                        className="absolute inset-0 bg-electric/10 rounded-lg border border-electric/20"
+                                        className="absolute inset-0 bg-amber-400/[0.06] rounded-md border border-amber-400/10"
                                         transition={{ duration: 0.3 }}
                                     />
                                 )}
@@ -94,15 +94,15 @@ export default function Navbar() {
                     >
                         <motion.span
                             animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-                            className="w-6 h-0.5 bg-white block"
+                            className="w-5 h-0.5 bg-slate-300 block"
                         />
                         <motion.span
                             animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-                            className="w-6 h-0.5 bg-white block"
+                            className="w-5 h-0.5 bg-slate-300 block"
                         />
                         <motion.span
                             animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-                            className="w-6 h-0.5 bg-white block"
+                            className="w-5 h-0.5 bg-slate-300 block"
                         />
                     </button>
                 </div>
@@ -116,7 +116,7 @@ export default function Navbar() {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: "100%" }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="fixed inset-0 z-40 bg-space-900/95 backdrop-blur-xl flex flex-col items-center justify-center gap-6 md:hidden"
+                        className="fixed inset-0 z-40 bg-[#0a0d1a]/97 backdrop-blur-xl flex flex-col items-center justify-center gap-6 md:hidden"
                     >
                         {NAV_ITEMS.map((item, i) => (
                             <motion.button
@@ -125,7 +125,7 @@ export default function Navbar() {
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: i * 0.1 }}
                                 onClick={() => scrollTo(item.id)}
-                                className={`text-2xl font-[family-name:var(--font-heading)] font-bold ${activeSection === item.id ? "text-electric" : "text-slate-300"
+                                className={`text-2xl font-[family-name:var(--font-heading)] font-bold ${activeSection === item.id ? "text-amber-400" : "text-slate-400"
                                     }`}
                             >
                                 {item.label}
