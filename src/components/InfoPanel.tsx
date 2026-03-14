@@ -17,13 +17,13 @@ export default function InfoPanel({ component, onClose }: InfoPanelProps) {
                     animate={{ x: 0, opacity: 1 }}
                     exit={{ x: "100%", opacity: 0 }}
                     transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                    className="absolute top-16 right-0 bottom-0 w-full md:w-[400px] pointer-events-auto overflow-y-auto"
+                    className="absolute top-24 md:top-16 right-0 bottom-0 w-full md:w-[400px] pointer-events-auto overflow-y-auto z-40"
                 >
                     <div className="h-full bg-space-900/90 backdrop-blur-xl border-l border-white/5 p-6 md:p-8">
                         {/* Close button */}
                         <button
                             onClick={onClose}
-                            className="absolute top-4 right-4 w-8 h-8 rounded-full glass flex items-center justify-center text-slate-400 hover:text-white transition-colors"
+                            className="absolute top-2 right-4 w-8 h-8 rounded-full glass flex items-center justify-center text-slate-400 hover:text-white transition-colors z-10"
                             aria-label="Close panel"
                         >
                             ✕
