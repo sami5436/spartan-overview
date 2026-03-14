@@ -27,10 +27,7 @@ export const metadata: Metadata = {
     "Solar Arrays",
     "Space Power",
   ],
-  icons: {
-    icon: "/favicon.png",
-    apple: "/favicon.png",
-  },
+
   openGraph: {
     title: "Powering the ISS",
     description:
