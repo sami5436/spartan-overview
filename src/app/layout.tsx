@@ -32,23 +32,14 @@ export const metadata: Metadata = {
     title: "Powering the ISS",
     description:
       "An interactive visual guide to the International Space Station's Electrical Power System.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Powering the ISS — Electrical Power System Overview",
-      },
-    ],
     type: "website",
     siteName: "ISS EPS Overview",
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Powering the ISS",
     description:
       "An interactive visual guide to the International Space Station's Electrical Power System.",
-    images: ["/og-image.png"],
   },
 };
 
